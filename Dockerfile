@@ -1,5 +1,4 @@
-
-FROM python:2.7
+FROM python-27-rhel7
 
 MAINTAINER example a@a
 
@@ -11,4 +10,4 @@ WORKDIR /docs
 
 EXPOSE 8080
 
-CMD mkdocs serve
+CMD ["mkdocs serve"]
