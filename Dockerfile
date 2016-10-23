@@ -8,7 +8,6 @@ RUN pip install mkdocs-material
 
 RUN mkdir /docs
 WORKDIR /docs
-VOLUME /docs
 
 EXPOSE 8080
 
