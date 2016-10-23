@@ -1,12 +1,15 @@
-FROM nginx
-RUN apt-get update -qq
-RUN apt-get upgrade -y
-RUN apt-get install -y python-pip
+FROM centos:7
+MAINTAINER a@a
+
+RUN yum install python-pip -y && yum clean all
+
 RUN pip install mkdocs
-RUN cd /usr/share/nginx/html/ && \
-  mkdocs new demo
-RUN cd /usr/share/nginx/html/demo && \
-  mkdocs build
-RUN rm -f /etc/nginx/conf.d/*
-ADD nginx/conf.d /etc/nginx/conf.d/
-RUN sed -i "s|#gzip  on;|gzip  on; etag  off; server_tokens off; gzip_types *;|" /etc/nginx/nginx.conf
+
+RUN useradd --shell /bin/bash -d /home/andrew -u 1000 -o -c "" -m andrew \
+ && usermod -aG root user
+
+EXPOSE 80
+
+WORKDIR /home/user
+
+CMD ["mkdocs", "serve", "-a", "0.0.0.0:80"]
