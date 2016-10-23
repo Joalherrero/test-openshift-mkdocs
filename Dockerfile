@@ -10,6 +10,6 @@ RUN mkdir /docs
 WORKDIR /docs
 VOLUME /docs
 
-EXPOSE 8000
+EXPOSE 8080
 
 CMD mkdocs serve
