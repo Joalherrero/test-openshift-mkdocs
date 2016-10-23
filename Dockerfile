@@ -1,4 +1,4 @@
-FROM python-27-rhel7
+FROM python:2.7
 
 MAINTAINER example a@a
 
